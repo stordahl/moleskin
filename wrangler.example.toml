@@ -1,0 +1,14 @@
+name = "moleskin"
+main = "src/index.tsx"
+compatibility_date = "2024-12-06"
+
+compatibility_flags = [ "nodejs_compat" ]
+
+[vars]
+MOLESKIN_USERNAME = "xxxxxxxxxx"
+MOLESKIN_PASSWORD = "xxxxxxxxxx"
+
+[[kv_namespaces]]
+binding = "MOLESKIN_KV"
+id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
