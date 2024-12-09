@@ -1,5 +1,5 @@
-
-![Moleskin: your personal web journal](https://github.com/user-attachments/assets/4f877853-567a-4ea8-b2b9-73d1bd81def4)
+![Moleskin: your personal web journal](https://github.com/user-attachments/assets/e6486833-83ed-42e6-93fa-08432ccacc2d#gh-dark-mode-only)
+![Moleskin: your personal web journal](https://github.com/user-attachments/assets/60fa1695-a90e-410f-8583-abbb56d14289#gh-light-mode-only)
 
 ## Overview
 
