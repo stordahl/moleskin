@@ -4,9 +4,11 @@ compatibility_date = "2024-12-06"
 
 compatibility_flags = [ "nodejs_compat" ]
 
-[vars]
-MOLESKIN_USERNAME = "xxxxxxxxxx"
-MOLESKIN_PASSWORD = "xxxxxxxxxx"
+# It's better to create your variables via the Dashboard or Wrangler
+# so you can track this file with git
+# [vars]
+# MOLESKIN_USERNAME = "xxxxxxxxxx"
+# MOLESKIN_PASSWORD = "xxxxxxxxxx"
 
 [[kv_namespaces]]
 binding = "MOLESKIN_KV"
