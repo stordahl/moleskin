@@ -1,6 +1,5 @@
-# Moleskin
 
-A private web journal, you self-host on Cloudflare
+![Moleskin: your personal web journal](https://github.com/user-attachments/assets/4f877853-567a-4ea8-b2b9-73d1bd81def4)
 
 ## Overview
 
