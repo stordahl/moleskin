@@ -36,10 +36,14 @@ const getSubtext = () => Object.entries(config.css.typography.subtext).map(([k,v
   return buildCssVariable(`subtext-${k}`, v.toString())
 })
 
-const getVisual = () => [...Object.entries(config.css.visual).map(([k,v]) => {
-  const value = typeof v === "number" ? `${v}px` : v
-  return buildCssVariable(k, value) 
-}), css`--border: var(--border-size) var(--border-style) var(--accent);`]
+const getVisual = () => [
+  ...Object.entries(config.css.visual).map(([k,v]) => {
+    const value = typeof v === "number" ? `${v}px` : v
+    return buildCssVariable(k, value) 
+  }), 
+  css`--border: var(--border-size) var(--border-style) var(--accent);`, 
+  css`--box-shadow: var(--box-shadow-x) var(--box-shadow-y) var(--box-shadow-spread) var(--shadow)`
+]
 
 function buildCssVariable(k: string, v: string) {
   return css`--${kebabCase(k)}: ${v};`

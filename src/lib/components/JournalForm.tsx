@@ -6,7 +6,7 @@ export const JournalForm: FC = () => {
   return (
     <form method="post" id="journal-form" class={_form}>
       <label for="title">Title</label>
-      <input type="text" id="title" name="title" placeholder="Title"/>
+      <input type="text" id="title" name="title" placeholder="Title" autofocus/>
       <textarea
         name="entry"
         placeholder="What's on your mind?"

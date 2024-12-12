@@ -15,7 +15,7 @@ export const Header: FC<{ title: string; description: string; }> = ({ title, des
 }
 
 const _header = css`
-  border-bottom: var(--border);
+  box-shadow: var(--box-shadow);
   padding: 1rem;
   display: flex;
   align-items: center;

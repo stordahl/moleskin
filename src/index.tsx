@@ -3,6 +3,9 @@ import { basicAuth } from 'hono/basic-auth'
 import { cors } from 'hono/cors'
 import { z } from 'zod'
 import { JournalForm, JournalList, Layout } from './lib/components'
+import { JournalEntry } from './lib/components/JournalEntry'
+import { JournalEntryCard } from './lib/components/JournalEntryCard'
+import { Search } from './lib/components/Search'
 import { Storage } from './lib/storage'
 import { config } from './moleskin'
 
@@ -59,12 +62,25 @@ app.get('/', async (c) => {
   const entries = await Storage.getEntries(c)
   return c.html(
     <Layout description={description} iconUrl={iconUrl} title={title}>
+      <Search />
       {entries.length ? 
         <JournalList entries={entries} /> :
-        <p>No Entries</p>}
+        <p>No Entries Found</p>}
     </Layout>
   )
-});
+})
+
+app.get('/entry/:id', async (c) => {
+  const id = c.req.param('id')
+  if(!id) throw Error("no id found")
+  const entry = await Storage.getEntry(c, id)
+  if (!entry) throw Error("No entry found")
+  return c.html(
+    <Layout description={description} iconUrl={iconUrl} title={title}>
+        <JournalEntry entry={entry} /> 
+    </Layout>
+  )
+})
 
 app.get('/new', async (c) => { 
   return c.html(
@@ -72,6 +88,25 @@ app.get('/new', async (c) => {
       <JournalForm />
     </Layout>
   )
-});
+})
+
+app.post('/search', async (c) => {
+  const data = await c.req.formData();
+  const searchTerm = data.get("search") as string;
+  const entries = await Storage.getEntries(c)
+  const filtered = entries.filter(e => {
+    return (
+      e.content.title?.toLowerCase().includes(searchTerm) ||
+      e.content.content?.toLowerCase().includes(searchTerm)
+    )
+  })
+  return c.html(
+    <>
+      {filtered.length ? 
+        filtered.map(entry => <JournalEntryCard entry={entry}/>):
+        <p>No Entries Found</p>}
+    </>
+  )
+})
 
 export default app

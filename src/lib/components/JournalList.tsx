@@ -1,28 +1,21 @@
 import { css } from "hono/css";
-import { JournalEntry } from './JournalEntry'
+import { JournalEntryCard } from './JournalEntryCard'
+import type { Entry } from './types'
 
 export const JournalList = ({ entries }: JournalListProps) => {
   return (
-    <div class={_list}>
-      {entries.map(entry => <JournalEntry entry={entry}/>)}
-    </div>
+      <div class={_list} id="search-results">
+        {entries.map(entry => <JournalEntryCard entry={entry}/>)}
+      </div>
   )
 }
 
 const _list = css`
-  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: auto;
+  gap: 1rem;
 `
-
-type Entry = {
-  id: string;
-  content: Content;
-  date: string;
-}
-
-type Content = {
-  title: string;
-  content: string;
-}
 
 type JournalListProps = {
   entries: Entry[];

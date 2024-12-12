@@ -1,5 +1,6 @@
 import { Context } from "hono";
 import { z } from "zod";
+import type { Entry } from "../components/types";
 
 export const JournalEntrySchema = z.object({
   id: z.string().optional(),
@@ -14,7 +15,7 @@ export type RawEntry = {
 
 export class Storage {
 
-  static async createEntry(c: Context, raw: RawEntry) {
+  static async createEntry(c: Context, raw: RawEntry): Promise<void> {
     const validatedEntry = this.parseEntry(raw)
 
     await c.env.MOLESKIN_KV.put(
@@ -23,7 +24,7 @@ export class Storage {
     )
   }
 
-  static async getEntries(c: Context) {
+  static async getEntries(c: Context): Promise<Entry[]> {
     const entries = await c.env.MOLESKIN_KV.list()
     const entriesData = await Promise.all(
       entries.keys.map(async (key: KVNamespaceListKey<unknown>) => {
@@ -38,6 +39,17 @@ export class Storage {
       .sort((a, b) => 
         new Date(b.date).getTime() - new Date(a.date).getTime()
       )
+  }
+
+  static async getEntry(c: Context, id: string): Promise<Entry | null> {
+    const entry = await c.env.MOLESKIN_KV.get(id)
+    if (!entry) return null
+    
+    const parsedEntry = JSON.parse(entry)
+    return {
+      ...parsedEntry,
+      content: JSON.parse(parsedEntry.content)
+    }
   }
 
   static async deleteEntry(c: Context) {

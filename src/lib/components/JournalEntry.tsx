@@ -1,7 +1,9 @@
 import { css } from "hono/css";
 import { marked } from "marked";
+import { _fadeInUp } from "./shared";
+import type { Entry } from "./types"
 
-export const JournalEntry = async ({ entry }: JournalListProps) => {
+export const JournalEntry = async ({ entry }: JournalEntryProps) => {
   const content = await marked(entry.content.content)
   return (
     <article key={entry.id} class={_article}>
@@ -28,7 +30,11 @@ const _article = css`
   padding: 0.8rem 1rem 1rem;
   border: var(--border);
   border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
   margin-block-end: 1rem;
+
+  ${_fadeInUp};
+
   h2 { 
     margin: 10px 0;
   }
@@ -69,18 +75,7 @@ const _controls = css`
   }
 `
 
-type Entry = {
-  id: string;
-  content: Content;
-  date: string;
-}
-
-type Content = {
-  title: string;
-  content: string;
-}
-
-type JournalListProps = {
+type JournalEntryProps = {
   entry: Entry;
 }
 
