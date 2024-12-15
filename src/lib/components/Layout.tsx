@@ -35,8 +35,9 @@ export const Layout = ({ children, description, iconUrl, title }: LayoutProps) =
       </head>
       <body class={_body}>
         <Header title={title} description={description}/>
-        <main class={_main}>{children}</main>
+        <main class={_main} id="main">{children}</main>
         <Footer />
+        <script src="/static/index.js"></script>
       </body>
     </html>
   )
@@ -47,6 +48,8 @@ const _body = css`
   :-hono-global {
     body {
       ${buildTokensFromConfig()}
+      --header-height: 90px;
+      --footer-height: 75px;
       margin: 0;
       padding: 0;
       background-color: var(--background);
@@ -76,20 +79,27 @@ const _body = css`
       text-decoration: var(--link-decoration);
     }
 
+    small { 
+      color: var(--text-secondary);
+      font-family: var(--subtext-family);
+    }
+
     input, textarea {
       border: none;
       padding: 10px;
-      border-radius: var(--border-radius);
+      border-radius: var(--control-border-radius);
       font-size: 1.3rem;
       background: var(--background);
-      border: var(--border);
+      border: var(--control-border);
       color: var(--text-primary);
     }
   }
 `
 
 const _main = css`
-  margin: 2rem auto;
+  margin: 0 auto;
+  padding: 2rem 0;
   width: 90vw;
   max-width: 700px;
+  min-height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
 `

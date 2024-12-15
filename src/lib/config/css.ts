@@ -36,14 +36,24 @@ const getSubtext = () => Object.entries(config.css.typography.subtext).map(([k,v
   return buildCssVariable(`subtext-${k}`, v.toString())
 })
 
-const getVisual = () => [
-  ...Object.entries(config.css.visual).map(([k,v]) => {
+const getVisualBox = () => [
+  ...Object.entries(config.css.visual.box).map(([k,v]) => {
     const value = typeof v === "number" ? `${v}px` : v
-    return buildCssVariable(k, value) 
+    return buildCssVariable(`box-${k}`, value) 
   }), 
-  css`--border: var(--border-size) var(--border-style) var(--accent);`, 
-  css`--box-shadow: var(--box-shadow-x) var(--box-shadow-y) var(--box-shadow-spread) var(--shadow)`
+  css`--box-border: var(--box-border-size) var(--box-border-style) var(--accent);`, 
+  css`--box-box-shadow: var(--box-box-shadow-x) var(--box-box-shadow-y) var(--box-box-shadow-spread) var(--shadow)`,
 ]
+
+const getVisualControls = () => [
+  ...Object.entries(config.css.visual.controls).map(([k,v]) => {
+    const value = typeof v === "number" ? `${v}px` : v
+    return buildCssVariable(`control-${k}`, value) 
+  }),
+  css`--control-border: var(--control-border-size) var(--control-border-style) var(--accent);`, 
+  css`--control-box-shadow: var(--control-box-shadow-x) var(--control-box-shadow-y) var(--control-box-shadow-spread) var(--shadow)`,
+]
+
 
 function buildCssVariable(k: string, v: string) {
   return css`--${kebabCase(k)}: ${v};`
@@ -58,6 +68,7 @@ export function buildTokensFromConfig() {
     getLinks(),
     getParagraphs(),
     getSubtext(),
-    getVisual(),
+    getVisualBox(),
+    getVisualControls(),
   ].flat()
 }

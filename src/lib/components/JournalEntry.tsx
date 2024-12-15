@@ -27,7 +27,7 @@ export const JournalEntry = async ({ entry }: JournalEntryProps) => {
 }
 
 const _article = css`
-  padding: 0.8rem 1rem 1rem;
+  padding: 0 1rem 1rem;
   border: var(--border);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);

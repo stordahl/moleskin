@@ -12,9 +12,13 @@ export const JournalList = ({ entries }: JournalListProps) => {
 
 const _list = css`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: auto;
   grid-template-rows: auto;
   gap: 1rem;
+
+  &:not(.list) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
 `
 
 type JournalListProps = {

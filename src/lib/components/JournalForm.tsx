@@ -31,10 +31,10 @@ const _form = css`
   input, textarea {
     border: none;
     padding: 10px;
-    border-radius: var(--border-radius);
+    border-radius: var(--control-border-radius);
     font-size: 1.3rem;
     background: var(--background);
-    border: var(--border);
+    border: var(--control-border);
     color: var(--text-primary);
   }
 

@@ -3,9 +3,9 @@ import { basicAuth } from 'hono/basic-auth'
 import { cors } from 'hono/cors'
 import { z } from 'zod'
 import { JournalForm, JournalList, Layout } from './lib/components'
+import { Controls } from './lib/components/Controls'
 import { JournalEntry } from './lib/components/JournalEntry'
 import { JournalEntryCard } from './lib/components/JournalEntryCard'
-import { Search } from './lib/components/Search'
 import { Storage } from './lib/storage'
 import { config } from './moleskin'
 
@@ -62,7 +62,7 @@ app.get('/', async (c) => {
   const entries = await Storage.getEntries(c)
   return c.html(
     <Layout description={description} iconUrl={iconUrl} title={title}>
-      <Search />
+      <Controls />
       {entries.length ? 
         <JournalList entries={entries} /> :
         <p>No Entries Found</p>}

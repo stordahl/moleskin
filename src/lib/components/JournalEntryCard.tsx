@@ -18,11 +18,14 @@ const _article = css`
   flex-direction: column;
   justify-content: space-between;
   padding: 0.8rem 1rem 1rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  border-radius: var(--box-border-radius);
+  box-shadow: var(--box-box-shadow);
   position: relative;
-  aspect-ratio: 1;
   transition: transform 0.2s ease-in-out 0s;
+
+  &:not(.list *) {
+    aspect-ratio: 1;
+  }
 
   ${_fadeInUp};
 
@@ -40,12 +43,7 @@ const _article = css`
 
   h2 { 
     margin: 10px 0;
-  }
-  
-  small { 
-    color: var(--text-secondary);
-    font-family: var(--subtext-family);
-  }
+  }  
 `
 
 type JournalEntryCardProps = {

@@ -11,12 +11,12 @@ const ColorThemeSchema = z.object({
 
 const ColorSchema = z.object({
   dark: ColorThemeSchema.default({
-    accent: "#B7B9BE",//"#F1F3F6",
+    accent: "#5b5d62",
     background: "#191B20",
     link: "#a2a2ff",
     shadow: "#ffffff36",
     textPrimary: "#FFFFFF",
-    textSecondary: "#B7B9BE",
+    textSecondary: "#5b5d62",
   }),
   light: ColorThemeSchema.default({
     accent: "#B7B9BE",
@@ -95,7 +95,24 @@ const VisualSchema = z.object({
 export const CssConfigSchema = z.object({
   colors: ColorSchema,
   typography: TypographySchema,
-  visual: VisualSchema,
+  visual: z.object({
+    box: VisualSchema.default({
+      borderRadius: 5,
+      borderSize: 0,
+      borderStyle: "unset",
+      boxShadowX: 0,
+      boxShadowY: 0,
+      boxShadowSpread: 5,
+    }),
+    controls: VisualSchema.default({
+      borderRadius: 5,
+      borderSize: 1,
+      borderStyle: "solid",
+      boxShadowX: 0,
+      boxShadowY: 0,
+      boxShadowSpread: 0,
+    }),
+  }),
 })
 
 export const InfoConfigSchema = z.object({

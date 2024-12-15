@@ -4,6 +4,8 @@ compatibility_date = "2024-12-06"
 
 compatibility_flags = [ "nodejs_compat" ]
 
+assets = { directory = "public" }
+
 # It's better to create your variables via the Dashboard or Wrangler
 # so you can track this file with git
 # [vars]

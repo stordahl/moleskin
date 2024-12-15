@@ -3,9 +3,9 @@ import { css, keyframes } from "hono/css";
 export const _button = css`
   color: var(--text-primary);
   text-decoration: none;
-  border: var(--border);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  border: var(--control-border);
+  border-radius: var(--control-border-radius);
+  box-shadow: var(--control-box-shadow);
   background: none;
   padding: 5px 10px;
   width: max-content;
