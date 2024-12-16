@@ -12,7 +12,6 @@ export const Footer: FC = () => {
 
 const _footer = css`
   height: var(--footer-height);
-  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;

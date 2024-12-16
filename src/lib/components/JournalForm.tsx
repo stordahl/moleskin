@@ -19,13 +19,14 @@ export const JournalForm: FC = () => {
 }
 
 const _form = css`
-  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 10px;
 
   label {
     visibility: hidden;
+    width: 0;
+    height: 0;
   }
 
   input, textarea {

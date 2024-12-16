@@ -37,7 +37,7 @@ export const Layout = ({ children, description, iconUrl, title }: LayoutProps) =
         <Header title={title} description={description}/>
         <main class={_main} id="main">{children}</main>
         <Footer />
-        <script src="/static/index.js"></script>
+        <script src="/static/index.js" type="module"></script>
       </body>
     </html>
   )
@@ -97,8 +97,7 @@ const _body = css`
 `
 
 const _main = css`
-  margin: 0 auto;
-  padding: 2rem 0;
+  margin: 2rem auto 0;
   width: 90vw;
   max-width: 700px;
   min-height: calc(100vh - calc(var(--header-height) + var(--footer-height)));

@@ -1,12 +1,14 @@
 import { css } from "hono/css";
-import { Filters } from "./Filters";
+import { Toggle } from "./Toggle";
 import { Search } from "./Search";
 
 export const Controls = () => {
   return (
     <div class={_controls}>
       <Search />
-      <Filters />
+      <div>
+        <Toggle id="list-view" label="Toggle View" />
+      </div>
     </div>
   )
 }
