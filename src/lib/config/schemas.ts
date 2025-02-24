@@ -117,7 +117,7 @@ export const CssConfigSchema = z.object({
 
 export const InfoConfigSchema = z.object({
   description: z.string().default("Your personal web journal"),
-  iconUrl: z.string().default("https://em-content.zobj.net/source/apple/391/pencil_270f-fe0f.png"),
+  iconUrl: z.string().default("https://fav.farm/%E2%9C%8F%EF%B8%8F"),
   title: z.string().default("Moleskin"),
 })
 
